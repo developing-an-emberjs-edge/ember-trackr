@@ -5,6 +5,7 @@ var App = window.App = require('./config/app');
 require('./templates');
 
 
+App.ApplicationController = require('./controllers/application_controller');
 
 require('./config/routes');
 
