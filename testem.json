@@ -1,0 +1,13 @@
+{
+  "framework": "qunit",
+  "src_files": [
+    "js/*/**/*",
+    "test/**/*"
+  ],
+  "serve_files": [
+    "js/application.js",
+    "test/setup.js",
+    "test/**/*.js"
+  ],
+  "before_tests": "ember build -c"
+}
