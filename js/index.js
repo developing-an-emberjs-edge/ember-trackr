@@ -6,6 +6,7 @@ require('./templates');
 
 
 App.ApplicationController = require('./controllers/application_controller');
+App.ApplicationView = require('./views/application_view');
 
 require('./config/routes');
 
