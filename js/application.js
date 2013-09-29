@@ -10,7 +10,7 @@ App.ApplicationAdapter = DS.FixtureAdapter;
 
 module.exports = App;
 
-},{"../vendor/ember":7,"../vendor/ember-data":6,"../vendor/handlebars":8,"../vendor/jquery":9}],2:[function(require,module,exports){
+},{"../vendor/ember":8,"../vendor/ember-data":7,"../vendor/handlebars":9,"../vendor/jquery":10}],2:[function(require,module,exports){
 var App = require('./app');
 
 App.Router.map(function() {
@@ -35,6 +35,7 @@ require('./templates');
 
 
 App.ApplicationController = require('./controllers/application_controller');
+App.Ticket = require('./models/ticket');
 App.ApplicationView = require('./views/application_view');
 
 require('./config/routes');
@@ -42,7 +43,23 @@ require('./config/routes');
 module.exports = App;
 
 
-},{"./config/app":1,"./config/routes":2,"./controllers/application_controller":3,"./templates":5,"./views/application_view":10}],5:[function(require,module,exports){
+},{"./config/app":1,"./config/routes":2,"./controllers/application_controller":3,"./models/ticket":5,"./templates":6,"./views/application_view":11}],5:[function(require,module,exports){
+var Ticket = DS.Model.extend({
+  title: DS.attr('string'),
+  description: DS.attr('string'),
+  status: DS.attr('string')
+});
+
+Ticket.FIXTURES = [{
+  id: 1,
+  title: 'Ticket 1',
+  description: 'Sed posuere consectetur est at lobortis.',
+  status: 'New'
+}];
+
+module.exports = Ticket;
+
+},{}],6:[function(require,module,exports){
 
 Ember.TEMPLATES['application'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
@@ -88,7 +105,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 // ==========================================================================
 // Project:   Ember Data
 // Copyright: ©2011-2012 Tilde Inc. and contributors.
@@ -8205,7 +8222,7 @@ Ember.onLoad('Ember.Application', function(Application) {
 
 })();
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 // Version: v1.0.0
 // Last commit: e2ea0cf (2013-08-31 23:47:39 -0700)
 
@@ -44677,7 +44694,7 @@ Ember.State = generateRemovedClass("Ember.State");
 
 })();
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /*
 
 Copyright (C) 2011 by Yehuda Katz
@@ -45041,7 +45058,7 @@ Handlebars.template = Handlebars.VM.template;
 })(Handlebars);
 ;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.9.1
  * http://jquery.com/
@@ -54639,7 +54656,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 })( window );
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 var ApplicationView = Ember.View.extend({
   classNames: ['application']
 });
