@@ -95,4 +95,14 @@ function program1(depth0,data) {
   
 });
 
+Ember.TEMPLATES['tickets/index'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("<div class=\"panel panel-info\">\n  <div class=\"panel-heading\"><h3 class=\"panel-title\">Tickets</h3></div>\n  <div class=\"panel-body\">Select a ticket from the list on the left.</div>\n</div>\n");
+  
+});
+
 
