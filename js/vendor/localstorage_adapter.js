@@ -212,3 +212,4 @@ DS.LSAdapter = DS.Adapter.extend(Ember.Evented, {
   }
 
 });
+

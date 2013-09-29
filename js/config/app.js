@@ -10,3 +10,4 @@ var App = Ember.Application.create();
 App.Store = require('./store'); // delete if you don't want ember-data
 
 module.exports = App;
+

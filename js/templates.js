@@ -26,7 +26,7 @@ function program1(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "currentYear", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(" EmberTrackr Inc.</p>\n  </div>\n</footer>\n");
+  data.buffer.push(" EmberTrackr Inc.</p>\n  </div>\n</footer>\n\n");
   return buffer;
   
 });
@@ -37,7 +37,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 
 
-  data.buffer.push("<div class=\"page-header\">\n  <h1>Welcome to EmberTrackr!</h1>\n</div>\n\n<p class=\"lead\">So far so good…</p>\n\n<p>Plenty more feature to add yet.</p>\n");
+  data.buffer.push("<div class=\"page-header\">\n  <h1>Welcome to EmberTrackr!</h1>\n</div>\n\n<p class=\"lead\">So far so good…</p>\n\n<p>Plenty more feature to add yet.</p>\n\n");
   
 });
 

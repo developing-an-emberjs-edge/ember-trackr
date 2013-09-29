@@ -13,3 +13,4 @@ test('footer', function() {
     equal(actual, expect);
   });
 });
+
