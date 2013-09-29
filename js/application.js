@@ -14,7 +14,7 @@ module.exports = App;
 var App = require('./app');
 
 App.Router.map(function() {
-
+  this.resource('tickets');
 });
 
 },{"./app":1}],3:[function(require,module,exports){
