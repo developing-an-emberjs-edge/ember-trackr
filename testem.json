@@ -11,4 +11,3 @@
   ],
   "before_tests": "ember build -c"
 }
-

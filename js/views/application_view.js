@@ -3,4 +3,3 @@ var ApplicationView = Ember.View.extend({
 });
 
 module.exports = ApplicationView;
-
