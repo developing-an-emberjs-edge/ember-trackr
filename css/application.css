@@ -40,3 +40,8 @@ body {
   color: #fff;
   background-color: #080808;
 }
+
+.panel-primary > .panel-heading .badge {
+  color: #428bca;
+  background-color: #fff;
+}

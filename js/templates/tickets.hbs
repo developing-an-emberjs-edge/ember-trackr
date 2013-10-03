@@ -3,6 +3,7 @@
     <nav class="list-group">
       {{#each}}
         {{#link-to "ticket" this class="list-group-item"}}
+          <span class="badge pull-right">{{status}}</span>
           {{title}}
         {{/link-to}}
       {{/each}}
