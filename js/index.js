@@ -7,6 +7,7 @@ require('./templates');
 
 App.ApplicationController = require('./controllers/application_controller');
 App.Ticket = require('./models/ticket');
+App.TicketRoute = require('./routes/ticket_route');
 App.TicketsRoute = require('./routes/tickets_route');
 App.ApplicationView = require('./views/application_view');
 
