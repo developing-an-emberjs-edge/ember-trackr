@@ -13,6 +13,10 @@
     {{description}}
   </div>
   <div class="panel-footer">
-    <button {{action "edit"}}>Edit</button>
+    {{#if isEditing}}
+      <button {{action "done"}}>Done</button>
+    {{else}}
+      <button {{action "edit"}}>Edit</button>
+    {{/if}}
   </div>
 </div>
