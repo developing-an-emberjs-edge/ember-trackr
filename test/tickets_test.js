@@ -27,11 +27,21 @@ test('editing ticket details', function() {
   visit('/tickets/1')
   .click('button:contains("Edit")')
   .fillIn('input[name="title"]', 'Foo Bar')
+  .fillIn('select[name="status"]', 'Open')
+  .fillIn('textarea[name="description"]', 'New description')
   .click('button:contains("Done")')
   .then(function() {
     ok(find('.list-group-item:contains("Foo Bar")').length,
        'expected title in master list to update');
     ok(find('.panel-title:contains("Foo Bar")').length,
        'expected title in detail view to update');
+
+    ok(find('.list-group-item .badge:contains("Open")').length,
+       'expected status in master list to update');
+    ok(find('.panel-title .badge:contains("Open")').length,
+       'expected status in detail view to update');
+
+    ok(find('.panel-body:contains("New description")').length,
+       'expected description to update');
   });
 });
