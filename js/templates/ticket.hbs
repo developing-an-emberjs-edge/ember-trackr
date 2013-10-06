@@ -2,6 +2,11 @@
   <div class="panel-heading">
     <h3 class="panel-title">
       {{#if isEditing}}
+        {{view Ember.Select
+               selectionBinding="status"
+               contentBinding="statuses"
+               name="status"
+               class="pull-right"}}
         {{input value=title name="title"}}
       {{else}}
         <span class="badge pull-right">{{status}}</span>
