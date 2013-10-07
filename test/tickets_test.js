@@ -45,3 +45,18 @@ test('editing ticket details', function() {
        'expected description to update');
   });
 });
+
+test('creating a ticket', function() {
+  visit('/tickets')
+  .click('a:contains("New Ticket")')
+  .fillIn('[name="title"]', 'My New Ticket')
+  .fillIn('[name="status"]', 'Open')
+  .fillIn('[name="description"]', 'Foo bar baz.')
+  .click('button:contains("Save")')
+  .then(function() {
+    ok(find('.list-group-item:contains("My New Ticket")').length,
+       'expected new ticket to appear in master list');
+    ok(find('.panel-title:contains("My New Ticket")').length,
+       'expected to see ticket in the details view');
+  });
+});
