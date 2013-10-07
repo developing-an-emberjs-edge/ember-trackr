@@ -68,29 +68,30 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 Ember.TEMPLATES['ticket'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var buffer = '', stack1, hashTypes, hashContexts, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
   var buffer = '', stack1, hashContexts, hashTypes, options;
-  data.buffer.push("\n        ");
+  data.buffer.push("\n        <div class=\"row\">\n          <div class=\"col-md-9\">\n            ");
+  hashContexts = {'value': depth0,'name': depth0,'class': depth0};
+  hashTypes = {'value': "ID",'name': "STRING",'class': "STRING"};
+  options = {hash:{
+    'value': ("title"),
+    'name': ("title"),
+    'class': ("form-control")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\n          </div>\n          <div class=\"col-md-3\">\n            ");
   hashContexts = {'selectionBinding': depth0,'contentBinding': depth0,'name': depth0,'class': depth0};
   hashTypes = {'selectionBinding': "STRING",'contentBinding': "STRING",'name': "STRING",'class': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
     'selectionBinding': ("status"),
     'contentBinding': ("statuses"),
     'name': ("status"),
-    'class': ("pull-right")
+    'class': ("form-control")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n        ");
-  hashContexts = {'value': depth0,'name': depth0};
-  hashTypes = {'value': "ID",'name': "STRING"};
-  options = {hash:{
-    'value': ("title"),
-    'name': ("title")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\n      ");
+  data.buffer.push("\n          </div>\n        </div>\n      ");
   return buffer;
   }
 
@@ -113,11 +114,13 @@ function program5(depth0,data) {
   
   var buffer = '', stack1, hashContexts, hashTypes, options;
   data.buffer.push("\n      ");
-  hashContexts = {'value': depth0,'name': depth0};
-  hashTypes = {'value': "ID",'name': "STRING"};
+  hashContexts = {'value': depth0,'rows': depth0,'name': depth0,'class': depth0};
+  hashTypes = {'value': "ID",'rows': "STRING",'name': "STRING",'class': "STRING"};
   options = {hash:{
     'value': ("description"),
-    'name': ("description")
+    'rows': ("12"),
+    'name': ("description"),
+    'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.textarea || depth0.textarea),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "textarea", options))));
   data.buffer.push("\n    ");
@@ -142,7 +145,7 @@ function program9(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "done", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">Done</button>\n    ");
+  data.buffer.push(" class=\"btn btn-default\">Done</button>\n    ");
   return buffer;
   }
 
@@ -153,7 +156,7 @@ function program11(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "edit", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">Edit</button>\n    ");
+  data.buffer.push(" class=\"btn btn-default\">Edit</button>\n    ");
   return buffer;
   }
 

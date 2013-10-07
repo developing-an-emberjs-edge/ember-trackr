@@ -2,12 +2,20 @@
   <div class="panel-heading">
     <h3 class="panel-title">
       {{#if isEditing}}
-        {{view Ember.Select
-               selectionBinding="status"
-               contentBinding="statuses"
-               name="status"
-               class="pull-right"}}
-        {{input value=title name="title"}}
+        <div class="row">
+          <div class="col-md-9">
+            {{input value=title
+                    name="title"
+                    class="form-control"}}
+          </div>
+          <div class="col-md-3">
+            {{view Ember.Select
+                   selectionBinding="status"
+                   contentBinding="statuses"
+                   name="status"
+                   class="form-control"}}
+          </div>
+        </div>
       {{else}}
         <span class="badge pull-right">{{status}}</span>
         {{title}}
@@ -16,16 +24,19 @@
   </div>
   <div class="panel-body">
     {{#if isEditing}}
-      {{textarea value=description name="description"}}
+      {{textarea value=description
+                 rows="12"
+                 name="description"
+                 class="form-control"}}
     {{else}}
       {{description}}
     {{/if}}
   </div>
   <div class="panel-footer">
     {{#if isEditing}}
-      <button {{action "done"}}>Done</button>
+      <button {{action "done"}} class="btn btn-default">Done</button>
     {{else}}
-      <button {{action "edit"}}>Edit</button>
+      <button {{action "edit"}} class="btn btn-default">Edit</button>
     {{/if}}
   </div>
 </div>
