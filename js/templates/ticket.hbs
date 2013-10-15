@@ -1,37 +1,17 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      {{#if isEditing}}
-        <div class="row">
-          <div class="col-md-9">
-            {{input value=title
-                    name="title"
-                    class="form-control"}}
-          </div>
-          <div class="col-md-3">
-            {{view Ember.Select
-                   selectionBinding="status"
-                   contentBinding="statuses"
-                   name="status"
-                   class="form-control"}}
-          </div>
-        </div>
-      {{else}}
+  {{#if isEditing}}
+    {{partial "tickets/form"}}
+  {{else}}
+    <div class="panel-heading">
+      <h3 class="panel-title">
         <span class="badge pull-right">{{status}}</span>
         {{title}}
-      {{/if}}
-    </h3>
-  </div>
-  <div class="panel-body">
-    {{#if isEditing}}
-      {{textarea value=description
-                 rows="12"
-                 name="description"
-                 class="form-control"}}
-    {{else}}
+      </h3>
+    </div>
+    <div class="panel-body">
       {{description}}
-    {{/if}}
-  </div>
+    </div>
+  {{/if}}
   <div class="panel-footer">
     {{#if isEditing}}
       <button {{action "done"}} class="btn btn-default">Done</button>
