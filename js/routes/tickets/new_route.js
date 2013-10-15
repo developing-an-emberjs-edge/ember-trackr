@@ -7,7 +7,11 @@ var TicketsNewRoute = Ember.Route.extend({
         'description'
       );
 
-      this.get('store').createRecord('ticket', attrs);
+      var ticket = this.get('store').createRecord('ticket', attrs);
+
+      var promise = ticket.save();
+
+      this.transitionTo('ticket', promise);
     }
   }
 });
