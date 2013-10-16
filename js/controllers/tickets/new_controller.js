@@ -1,5 +1,5 @@
 var TicketsNewController = Ember.ObjectController.extend({
-  statuses: ['New', 'Open', 'Closed']
+  statuses: ['New', 'Open']
 });
 
 module.exports = TicketsNewController;
