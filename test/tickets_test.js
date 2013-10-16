@@ -58,5 +58,7 @@ test('creating a ticket', function() {
        'expected new ticket to appear in master list');
     ok(find('.panel-title:contains("My New Ticket")').length,
        'expected to see ticket in the details view');
+    ok(find('.panel-title:contains("Open")').length,
+       'expected ticket status to be "Open"');
   });
 });
