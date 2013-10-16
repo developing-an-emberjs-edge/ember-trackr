@@ -1,4 +1,8 @@
 var TicketsNewRoute = Ember.Route.extend({
+  model: function() {
+    return {};
+  },
+
   actions: {
     save: function() {
       var attrs = this.get('controller').getProperties(
