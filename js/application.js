@@ -59,13 +59,14 @@ App.TicketRoute = require('./routes/ticket_route');
 App.TicketsRoute = require('./routes/tickets_route');
 App.TicketsNewRoute = require('./routes/tickets/new_route');
 App.ApplicationView = require('./views/application_view');
+App.EmberTextField = require('./views/ember/text_field');
 
 require('./config/routes');
 
 module.exports = App;
 
 
-},{"./config/app":1,"./config/routes":2,"./controllers/application_controller":3,"./controllers/ticket_controller":4,"./controllers/tickets/new_controller":5,"./models/ticket":7,"./routes/ticket_route":8,"./routes/tickets/new_route":9,"./routes/tickets_route":10,"./templates":11,"./views/application_view":16}],7:[function(require,module,exports){
+},{"./config/app":1,"./config/routes":2,"./controllers/application_controller":3,"./controllers/ticket_controller":4,"./controllers/tickets/new_controller":5,"./models/ticket":7,"./routes/ticket_route":8,"./routes/tickets/new_route":9,"./routes/tickets_route":10,"./templates":11,"./views/application_view":16,"./views/ember/text_field":17}],7:[function(require,module,exports){
 var Ticket = DS.Model.extend({
   title: DS.attr('string'),
   description: DS.attr('string'),
@@ -351,12 +352,13 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 
   data.buffer.push("<div class=\"panel-heading\">\n  <h3 class=\"panel-title\">\n    <div class=\"row\">\n      <div class=\"col-md-9\">\n        ");
-  hashContexts = {'value': depth0,'name': depth0,'placeholder': depth0,'class': depth0};
-  hashTypes = {'value': "ID",'name': "STRING",'placeholder': "STRING",'class': "STRING"};
+  hashContexts = {'value': depth0,'name': depth0,'placeholder': depth0,'autofocus': depth0,'class': depth0};
+  hashTypes = {'value': "ID",'name': "STRING",'placeholder': "STRING",'autofocus': "BOOLEAN",'class': "STRING"};
   options = {hash:{
     'value': ("title"),
     'name': ("title"),
     'placeholder': ("Title"),
+    'autofocus': (true),
     'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
@@ -54974,6 +54976,11 @@ var ApplicationView = Ember.View.extend({
 });
 
 module.exports = ApplicationView;
+
+},{}],17:[function(require,module,exports){
+Ember.TextField.reopen({
+  attributeBindings: ['autofocus']
+});
 
 },{}]},{},[6])
 ;

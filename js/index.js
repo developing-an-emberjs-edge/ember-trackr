@@ -13,6 +13,7 @@ App.TicketRoute = require('./routes/ticket_route');
 App.TicketsRoute = require('./routes/tickets_route');
 App.TicketsNewRoute = require('./routes/tickets/new_route');
 App.ApplicationView = require('./views/application_view');
+App.EmberTextField = require('./views/ember/text_field');
 
 require('./config/routes');
 

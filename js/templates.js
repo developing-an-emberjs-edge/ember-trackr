@@ -207,12 +207,13 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 
   data.buffer.push("<div class=\"panel-heading\">\n  <h3 class=\"panel-title\">\n    <div class=\"row\">\n      <div class=\"col-md-9\">\n        ");
-  hashContexts = {'value': depth0,'name': depth0,'placeholder': depth0,'class': depth0};
-  hashTypes = {'value': "ID",'name': "STRING",'placeholder': "STRING",'class': "STRING"};
+  hashContexts = {'value': depth0,'name': depth0,'placeholder': depth0,'autofocus': depth0,'class': depth0};
+  hashTypes = {'value': "ID",'name': "STRING",'placeholder': "STRING",'autofocus': "BOOLEAN",'class': "STRING"};
   options = {hash:{
     'value': ("title"),
     'name': ("title"),
     'placeholder': ("Title"),
+    'autofocus': (true),
     'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.input || depth0.input),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "input", options))));
