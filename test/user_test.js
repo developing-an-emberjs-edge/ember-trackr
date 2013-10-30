@@ -5,11 +5,14 @@ test('displayName', function() {
   container.register('store:main', DS.Store);
   container.register('model:user', App.User);
 
-  var store = container.lookup('store:main');
+  var store = container.lookup('store:main'),
+      user;
 
-  var user = store.createRecord('user', {
-    firstName: 'Tom',
-    lastName: 'Dale'
+  Ember.run(function() {
+    user = store.createRecord('user', {
+      firstName: 'Tom',
+      lastName: 'Dale'
+    });
   });
 
   equal(user.get('displayName'), 'Tom Dale');
