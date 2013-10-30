@@ -1,12 +1,17 @@
-module('User');
+var container, store;
+
+module('User', {
+  setup: function() {
+    container = new Ember.Container();
+    container.register('store:main', DS.Store);
+    container.register('model:user', App.User);
+
+    store = container.lookup('store:main');
+  }
+});
 
 test('displayName', function() {
-  var container = new Ember.Container();
-  container.register('store:main', DS.Store);
-  container.register('model:user', App.User);
-
-  var store = container.lookup('store:main'),
-      user;
+  var user;
 
   Ember.run(function() {
     user = store.createRecord('user', {
