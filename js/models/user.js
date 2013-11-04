@@ -1,3 +1,5 @@
+var md5 = require('../vendor/md5').md5;
+
 var User = DS.Model.extend({
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
