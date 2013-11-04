@@ -35,3 +35,27 @@ test('gravatarURL', function() {
   equal(user.get('gravatarURL'),
         'http://www.gravatar.com/avatar/e4f7cd8905e896b04425b1d08411e9fb.jpg?s=80');
 });
+
+test('gravatarURL with blank email', function() {
+  var user;
+
+  Ember.run(function() {
+    user = store.createRecord('user', {
+      email: ''
+    });
+  });
+
+  equal(user.get('gravatarURL'),
+        'http://www.gravatar.com/avatar/00000000000000000000000000000000.jpg?s=80');
+});
+
+test('gravatarURL with undefined email', function() {
+  var user;
+
+  Ember.run(function() {
+    user = store.createRecord('user');
+  });
+
+  equal(user.get('gravatarURL'),
+        'http://www.gravatar.com/avatar/00000000000000000000000000000000.jpg?s=80');
+});
