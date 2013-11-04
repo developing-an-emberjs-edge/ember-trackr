@@ -22,3 +22,16 @@ test('displayName', function() {
 
   equal(user.get('displayName'), 'Tom Dale');
 });
+
+test('gravatarURL', function() {
+  var user;
+
+  Ember.run(function() {
+    user = store.createRecord('user', {
+      email: 'tom@example.com'
+    });
+  });
+
+  equal(user.get('gravatarURL'),
+        'http://www.gravatar.com/avatar/e4f7cd8905e896b04425b1d08411e9fb.jpg?s=80');
+});
