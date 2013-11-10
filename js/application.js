@@ -119,6 +119,18 @@ var User = DS.Model.extend({
   }.property('email')
 });
 
+User.FIXTURES = [{
+  id: 1,
+  firstName: 'Yehuda',
+  lastName: 'Katz',
+  email: 'wycats@gmail.com'
+}, {
+  id: 2,
+  firstName: 'Tom',
+  lastName: 'Dale',
+  email: 'tom@tomdale.net'
+}];
+
 module.exports = User;
 
 },{"../vendor/md5":17}],9:[function(require,module,exports){
