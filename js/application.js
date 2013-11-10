@@ -212,6 +212,12 @@ function program5(depth0,data) {
   data.buffer.push("Tickets");
   }
 
+function program7(depth0,data) {
+  
+  
+  data.buffer.push("Users");
+  }
+
   data.buffer.push("<div id=\"wrap\">\n  <header class=\"navbar navbar-inverse navbar-fixed-top\">\n    <div class=\"container\">\n      <div class=\"navbar-header\">\n        ");
   hashContexts = {'class': depth0};
   hashTypes = {'class': "STRING"};
@@ -231,6 +237,12 @@ function program5(depth0,data) {
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "tickets", options) : helperMissing.call(depth0, "link-to", "tickets", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("</li>\n        <li>");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "users", options) : helperMissing.call(depth0, "link-to", "users", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("</li>\n      </ul>\n    </div>\n  </header>\n\n  <div role=\"main\" class=\"container\">\n    ");
   hashTypes = {};
