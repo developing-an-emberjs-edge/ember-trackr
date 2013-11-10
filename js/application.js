@@ -18,6 +18,7 @@ App.Router.map(function() {
     this.resource('ticket', { path: ':ticket_id' });
     this.route('new');
   });
+  this.resource('users');
 });
 
 },{"./app":1}],3:[function(require,module,exports){
