@@ -433,7 +433,11 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'alt': ("displayName")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push(">\n  </div>\n</div>\n");
+  data.buffer.push(">\n    <dl>\n      <dt>Email</dt>\n      <dd>");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "email", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("</dd>\n    </dl>\n  </div>\n</div>\n");
   return buffer;
   
 });
