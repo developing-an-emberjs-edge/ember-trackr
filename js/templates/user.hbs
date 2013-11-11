@@ -8,7 +8,11 @@
     <img {{bind-attr src=gravatarURL alt=displayName}}>
     <dl>
       <dt>Email</dt>
-      <dd>{{email}}</dd>
+      <dd>
+        {{#mail-to email=email}}
+          {{email}}
+        {{/mail-to}}
+      </dd>
     </dl>
   </div>
 </div>

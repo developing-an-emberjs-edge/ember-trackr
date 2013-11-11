@@ -5,6 +5,7 @@ var App = window.App = require('./config/app');
 require('./templates');
 
 
+App.MailToComponent = require('./components/mail_to_component');
 App.ApplicationController = require('./controllers/application_controller');
 App.TicketController = require('./controllers/ticket_controller');
 App.TicketsNewController = require('./controllers/tickets/new_controller');
