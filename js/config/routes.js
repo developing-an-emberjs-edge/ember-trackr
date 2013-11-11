@@ -5,5 +5,7 @@ App.Router.map(function() {
     this.resource('ticket', { path: ':ticket_id' });
     this.route('new');
   });
-  this.resource('users');
+  this.resource('users', function() {
+    this.resource('user', { path: ':user_id' });
+  });
 });
