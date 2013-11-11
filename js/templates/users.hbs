@@ -2,7 +2,9 @@
   <div class="col-md-4">
     <nav class="list-group">
       {{#each}}
-        <a>{{displayName}}</a>
+        {{#link-to "user" this class="list-group-item"}}
+          {{displayName}}
+        {{/link-to}}
       {{/each}}
     </nav>
   </div>
