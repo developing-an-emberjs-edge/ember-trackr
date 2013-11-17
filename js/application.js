@@ -6,6 +6,8 @@ var GravatarImageComponent = Ember.Component.extend({
 
   attributeBindings: ['src', 'alt'],
 
+  size: 80,
+
   src: function() {
     var email = this.get('email'),
         computedMD5;
