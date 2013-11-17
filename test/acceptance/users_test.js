@@ -56,3 +56,12 @@ test('creating a user', function() {
        'expected to see gravatar image in detail view');
   });
 });
+
+test('cancelling user creation', function() {
+  visit('/users/new')
+  .click('button:contains("Cancel")')
+  .then(function() {
+    equal(find('[name="firstName"]').length, 0,
+          'expected not to find firstName field');
+  });
+});
