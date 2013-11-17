@@ -17,3 +17,13 @@ test('src with blank email', function() {
   equal(component.get('src'),
         'http://www.gravatar.com/avatar/00000000000000000000000000000000.jpg?s=80');
 });
+
+test('src with size set', function() {
+  var component = App.GravatarImageComponent.create({
+    email: 'tom@example.com',
+    size: 512
+  });
+
+  equal(component.get('src'),
+        'http://www.gravatar.com/avatar/e4f7cd8905e896b04425b1d08411e9fb.jpg?s=512');
+});
