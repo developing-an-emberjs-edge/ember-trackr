@@ -7,20 +7,7 @@ var User = DS.Model.extend({
 
   displayName: function() {
     return this.get('firstName') + ' ' + this.get('lastName');
-  }.property('firstName', 'lastName'),
-
-  gravatarURL: function() {
-    var email = this.get('email'),
-        computedMD5;
-
-    if (Ember.isEmpty(email)) {
-      computedMD5 = '00000000000000000000000000000000';
-    } else {
-      computedMD5 = md5(email);
-    }
-
-    return 'http://www.gravatar.com/avatar/%@.jpg?s=80'.fmt(computedMD5);
-  }.property('email')
+  }.property('firstName', 'lastName')
 });
 
 User.FIXTURES = [{
