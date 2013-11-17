@@ -20,6 +20,10 @@ test('viewing ticket details', function() {
   .then(function() {
     ok(find('*:contains("Sed posuere consectetur est at lobortis.")').length,
        'expected to find ticket description');
+    ok(find('a:contains("Yehuda Katz")').length,
+       'expected to find ticket creator');
+    ok(find('a:contains("Tom Dale")').length,
+       'expected to find ticket assignee');
   });
 });
 
