@@ -15,4 +15,11 @@
       </dd>
     </dl>
   </div>
+  <div class="panel-footer">
+    {{#if isEditing}}
+      <button {{action "done"}} class="btn btn-default">Done</button>
+    {{else}}
+      <button {{action "edit"}} class="btn btn-default">Edit</button>
+    {{/if}}
+  </div>
 </div>
