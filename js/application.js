@@ -119,24 +119,37 @@ module.exports = App;
 var Ticket = DS.Model.extend({
   title: DS.attr('string'),
   description: DS.attr('string'),
-  status: DS.attr('string')
+  status: DS.attr('string'),
+  creator: DS.belongsTo('user', {
+    async: true,
+    inverse: 'ticketsCreated'
+  }),
+  assignee: DS.belongsTo('user', {
+    async: true,
+    inverse: 'ticketsAssigned'
+  })
 });
 
 Ticket.FIXTURES = [{
   id: 1,
   title: 'Ticket 1',
   description: 'Sed posuere consectetur est at lobortis.',
-  status: 'New'
+  status: 'New',
+  creator: 1,
+  assignee: 2
 }, {
   id: 2,
   title: 'Ticket 2',
   description: 'Sed posuere consectetur est at lobortis.',
-  status: 'New'
+  status: 'New',
+  creator: 2,
+  assignee: 1
 }, {
   id: 3,
   title: 'Ticket 3',
   description: 'Sed posuere consectetur est at lobortis.',
-  status: 'New'
+  status: 'New',
+  creator: 1
 }];
 
 module.exports = Ticket;
@@ -148,6 +161,14 @@ var User = DS.Model.extend({
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
   email: DS.attr('string'),
+  ticketsCreated: DS.hasMany('ticket', {
+    async: true,
+    inverse: 'creator'
+  }),
+  ticketsAssigned: DS.hasMany('ticket', {
+    async: true,
+    inverse: 'assignee'
+  }),
 
   displayName: function() {
     return this.get('firstName') + ' ' + this.get('lastName');
@@ -158,12 +179,16 @@ User.FIXTURES = [{
   id: 1,
   firstName: 'Yehuda',
   lastName: 'Katz',
-  email: 'wycats@gmail.com'
+  email: 'wycats@gmail.com',
+  ticketsCreated: [1, 3],
+  ticketsAssigned: [2]
 }, {
   id: 2,
   firstName: 'Tom',
   lastName: 'Dale',
-  email: 'tom@tomdale.net'
+  email: 'tom@tomdale.net',
+  ticketsCreated: [2],
+  ticketsAssigned: [1]
 }];
 
 module.exports = User;
