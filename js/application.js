@@ -24,7 +24,7 @@ var GravatarImageComponent = Ember.Component.extend({
 
 module.exports = GravatarImageComponent;
 
-},{"../vendor/md5":20}],2:[function(require,module,exports){
+},{"../vendor/md5":21}],2:[function(require,module,exports){
 var MailToComponent = Ember.Component.extend({
   tagName: 'a',
 
@@ -49,7 +49,7 @@ App.ApplicationAdapter = DS.FixtureAdapter;
 
 module.exports = App;
 
-},{"../vendor/ember":17,"../vendor/ember-data":16,"../vendor/handlebars":18,"../vendor/jquery":19}],4:[function(require,module,exports){
+},{"../vendor/ember":18,"../vendor/ember-data":17,"../vendor/handlebars":19,"../vendor/jquery":20}],4:[function(require,module,exports){
 var App = require('./app');
 
 App.Router.map(function() {
@@ -102,6 +102,7 @@ App.Ticket = require('./models/ticket');
 App.User = require('./models/user');
 App.TicketRoute = require('./routes/ticket_route');
 App.TicketsRoute = require('./routes/tickets_route');
+App.UserRoute = require('./routes/user_route');
 App.UsersRoute = require('./routes/users_route');
 App.TicketsNewRoute = require('./routes/tickets/new_route');
 App.ApplicationView = require('./views/application_view');
@@ -112,7 +113,7 @@ require('./config/routes');
 module.exports = App;
 
 
-},{"./components/gravatar_image_component":1,"./components/mail_to_component":2,"./config/app":3,"./config/routes":4,"./controllers/application_controller":5,"./controllers/ticket_controller":6,"./controllers/tickets/new_controller":7,"./models/ticket":9,"./models/user":10,"./routes/ticket_route":11,"./routes/tickets/new_route":12,"./routes/tickets_route":13,"./routes/users_route":14,"./templates":15,"./views/application_view":21,"./views/ember/text_field":22}],9:[function(require,module,exports){
+},{"./components/gravatar_image_component":1,"./components/mail_to_component":2,"./config/app":3,"./config/routes":4,"./controllers/application_controller":5,"./controllers/ticket_controller":6,"./controllers/tickets/new_controller":7,"./models/ticket":9,"./models/user":10,"./routes/ticket_route":11,"./routes/tickets/new_route":12,"./routes/tickets_route":13,"./routes/user_route":14,"./routes/users_route":15,"./templates":16,"./views/application_view":22,"./views/ember/text_field":23}],9:[function(require,module,exports){
 var Ticket = DS.Model.extend({
   title: DS.attr('string'),
   description: DS.attr('string'),
@@ -165,7 +166,7 @@ User.FIXTURES = [{
 
 module.exports = User;
 
-},{"../vendor/md5":20}],11:[function(require,module,exports){
+},{"../vendor/md5":21}],11:[function(require,module,exports){
 var TicketRoute = Ember.Route.extend({
   actions: {
     edit: function() {
@@ -220,6 +221,17 @@ var TicketsRoute = Ember.Route.extend({
 module.exports = TicketsRoute;
 
 },{}],14:[function(require,module,exports){
+var UserRoute = Ember.Route.extend({
+  actions: {
+    edit: function() {
+      this.set('controller.isEditing', true);
+    }
+  }
+});
+
+module.exports = UserRoute;
+
+},{}],15:[function(require,module,exports){
 var UsersRoute = Ember.Route.extend({
   model: function() {
     return this.get('store').findAll('user');
@@ -228,7 +240,7 @@ var UsersRoute = Ember.Route.extend({
 
 module.exports = UsersRoute;
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 
 Ember.TEMPLATES['application'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
@@ -666,7 +678,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 // ==========================================================================
 // Project:   Ember Data
 // Copyright: ©2011-2012 Tilde Inc. and contributors.
@@ -8783,7 +8795,7 @@ Ember.onLoad('Ember.Application', function(Application) {
 
 })();
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 // Version: v1.0.0
 // Last commit: e2ea0cf (2013-08-31 23:47:39 -0700)
 
@@ -45255,7 +45267,7 @@ Ember.State = generateRemovedClass("Ember.State");
 
 })();
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /*
 
 Copyright (C) 2011 by Yehuda Katz
@@ -45619,7 +45631,7 @@ Handlebars.template = Handlebars.VM.template;
 })(Handlebars);
 ;
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.9.1
  * http://jquery.com/
@@ -55217,7 +55229,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 })( window );
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /*
  * JavaScript MD5 1.0.1
  * https://github.com/blueimp/JavaScript-MD5
@@ -55493,14 +55505,14 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
     }
 }(this));
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 var ApplicationView = Ember.View.extend({
   classNames: ['application']
 });
 
 module.exports = ApplicationView;
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 Ember.TextField.reopen({
   attributeBindings: ['autofocus']
 });
