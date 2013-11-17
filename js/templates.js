@@ -232,15 +232,16 @@ function program1(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "displayName", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    </h3>\n  </div>\n  <div class=\"panel-body\">\n    <img ");
-  hashContexts = {'src': depth0,'alt': depth0};
-  hashTypes = {'src': "ID",'alt': "ID"};
+  data.buffer.push("\n    </h3>\n  </div>\n  <div class=\"panel-body\">\n    ");
+  hashContexts = {'email': depth0,'alt': depth0,'size': depth0};
+  hashTypes = {'email': "ID",'alt': "ID",'size': "INTEGER"};
   options = {hash:{
-    'src': ("gravatarURL"),
-    'alt': ("displayName")
+    'email': ("email"),
+    'alt': ("displayName"),
+    'size': (200)
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers['bind-attr'] || depth0['bind-attr']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "bind-attr", options))));
-  data.buffer.push(">\n    <dl>\n      <dt>Email</dt>\n      <dd>\n        ");
+  data.buffer.push(escapeExpression(((stack1 = helpers['gravatar-image'] || depth0['gravatar-image']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "gravatar-image", options))));
+  data.buffer.push("\n    <dl>\n      <dt>Email</dt>\n      <dd>\n        ");
   hashContexts = {'email': depth0};
   hashTypes = {'email': "ID"};
   options = {hash:{
