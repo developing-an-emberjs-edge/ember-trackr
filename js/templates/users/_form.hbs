@@ -1,0 +1,31 @@
+<div class="panel-heading">
+  <h3 class="panel-title">
+    <div class="row">
+      <div class="col-md-6">
+        {{input value=firstName
+                name="firstName"
+                placeholder="First name"
+                autofocus=true
+                class="form-control"}}
+      </div>
+      <div class="col-md-6">
+        {{input value=lastName
+                name="lastName"
+                placeholder="Last name"
+                class="form-control"}}
+      </div>
+    </div>
+  </h3>
+</div>
+<div class="panel-body">
+  {{gravatar-image email=email alt=displayName size=200}}
+  <dl>
+    <dt>Email</dt>
+    <dd>
+      {{input value=email
+              name="email"
+              placeholder="Email"
+              class="form-control"}}
+    </dd>
+  </dl>
+</div>

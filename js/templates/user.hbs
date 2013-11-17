@@ -1,20 +1,24 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-      {{displayName}}
-    </h3>
-  </div>
-  <div class="panel-body">
-    {{gravatar-image email=email alt=displayName size=200}}
-    <dl>
-      <dt>Email</dt>
-      <dd>
-        {{#mail-to email=email}}
-          {{email}}
-        {{/mail-to}}
-      </dd>
-    </dl>
-  </div>
+  {{#if isEditing}}
+    {{partial "users/form"}}
+  {{else}}
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        {{displayName}}
+      </h3>
+    </div>
+    <div class="panel-body">
+      {{gravatar-image email=email alt=displayName size=200}}
+      <dl>
+        <dt>Email</dt>
+        <dd>
+          {{#mail-to email=email}}
+            {{email}}
+          {{/mail-to}}
+        </dd>
+      </dl>
+    </div>
+  {{/if}}
   <div class="panel-footer">
     {{#if isEditing}}
       <button {{action "done"}} class="btn btn-default">Done</button>
