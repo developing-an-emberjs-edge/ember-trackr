@@ -10,6 +10,12 @@
     </div>
     <div class="panel-body">
       {{description}}
+
+      <h5>Reported by:</h5>
+      {{#link-to "user" creator}}{{creator.displayName}}{{/link-to}}
+
+      <h5>Assigned to:</h5>
+      {{#link-to "user" assignee}}{{assignee.displayName}}{{/link-to}}
     </div>
   {{/if}}
   <div class="panel-footer">
