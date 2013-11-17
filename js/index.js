@@ -16,6 +16,7 @@ App.TicketRoute = require('./routes/ticket_route');
 App.TicketsRoute = require('./routes/tickets_route');
 App.UserRoute = require('./routes/user_route');
 App.UsersRoute = require('./routes/users_route');
+App.UsersNewRoute = require('./routes/users/new_route');
 App.TicketsNewRoute = require('./routes/tickets/new_route');
 App.ApplicationView = require('./views/application_view');
 App.EmberTextField = require('./views/ember/text_field');
