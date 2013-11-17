@@ -15,7 +15,7 @@ var GravatarImageComponent = Ember.Component.extend({
       computedMD5 = md5(email);
     }
 
-    return 'http://www.gravatar.com/avatar/%@.jpg?s=80'.fmt(computedMD5);
+    return 'http://www.gravatar.com/avatar/%@.jpg?s=%@'.fmt(computedMD5, this.get('size'));
   }.property('email')
 });
 
