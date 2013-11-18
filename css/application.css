@@ -45,3 +45,7 @@ body {
   color: #428bca;
   background-color: #fff;
 }
+
+.panel .list-group-item h5 {
+  margin-top: 0;
+}

@@ -413,35 +413,59 @@ function program3(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "description", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n\n      <h5>Reported by:</h5>\n      ");
+  data.buffer.push("\n    </div>\n    <div class=\"list-group\">\n      <div class=\"list-group-item\">\n        <div class=\"row\">\n          <div class=\"col-md-6\">\n            <h5>Reported by:</h5>\n            ");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "user", "creator", options) : helperMissing.call(depth0, "link-to", "user", "creator", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n\n      <h5>Assigned to:</h5>\n      ");
+  data.buffer.push("\n          </div>\n          <div class=\"col-md-6\">\n            <h5>Assigned to:</h5>\n            ");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},inverse:self.noop,fn:self.program(6, program6, data),contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "user", "assignee", options) : helperMissing.call(depth0, "link-to", "user", "assignee", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n    </div>\n  ");
+  data.buffer.push("\n          </div>\n        </div>\n      </div>\n    </div>\n  ");
   return buffer;
   }
 function program4(depth0,data) {
   
-  var hashTypes, hashContexts;
+  var buffer = '', stack1, hashContexts, hashTypes, options;
+  data.buffer.push("\n              ");
+  hashContexts = {'email': depth0,'size': depth0,'class': depth0};
+  hashTypes = {'email': "ID",'size': "INTEGER",'class': "STRING"};
+  options = {hash:{
+    'email': ("creator.email"),
+    'size': (40),
+    'class': ("img-circle")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers['gravatar-image'] || depth0['gravatar-image']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "gravatar-image", options))));
+  data.buffer.push("\n              ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "creator.displayName", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n            ");
+  return buffer;
   }
 
 function program6(depth0,data) {
   
-  var hashTypes, hashContexts;
+  var buffer = '', stack1, hashContexts, hashTypes, options;
+  data.buffer.push("\n              ");
+  hashContexts = {'email': depth0,'size': depth0,'class': depth0};
+  hashTypes = {'email': "ID",'size': "INTEGER",'class': "STRING"};
+  options = {hash:{
+    'email': ("assignee.email"),
+    'size': (40),
+    'class': ("img-circle")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers['gravatar-image'] || depth0['gravatar-image']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "gravatar-image", options))));
+  data.buffer.push("\n              ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "assignee.displayName", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n            ");
+  return buffer;
   }
 
 function program8(depth0,data) {

@@ -10,12 +10,26 @@
     </div>
     <div class="panel-body">
       {{description}}
-
-      <h5>Reported by:</h5>
-      {{#link-to "user" creator}}{{creator.displayName}}{{/link-to}}
-
-      <h5>Assigned to:</h5>
-      {{#link-to "user" assignee}}{{assignee.displayName}}{{/link-to}}
+    </div>
+    <div class="list-group">
+      <div class="list-group-item">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Reported by:</h5>
+            {{#link-to "user" creator}}
+              {{gravatar-image email=creator.email size=40 class="img-circle"}}
+              {{creator.displayName}}
+            {{/link-to}}
+          </div>
+          <div class="col-md-6">
+            <h5>Assigned to:</h5>
+            {{#link-to "user" assignee}}
+              {{gravatar-image email=assignee.email size=40 class="img-circle"}}
+              {{assignee.displayName}}
+            {{/link-to}}
+          </div>
+        </div>
+      </div>
     </div>
   {{/if}}
   <div class="panel-footer">
