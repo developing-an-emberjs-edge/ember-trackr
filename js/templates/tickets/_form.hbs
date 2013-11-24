@@ -25,3 +25,29 @@
              placeholder="Description…"
              class="form-control"}}
 </div>
+<div class="list-group">
+  <div class="list-group-item">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Reported by:</h5>
+        {{gravatar-image email=creator.email size=40 class="img-circle"}}
+        {{view Ember.Select
+               valueBinding="creatorId"
+               contentBinding="users"
+               optionLabelPath="content.displayName"
+               optionValuePath="content.id"
+               name="creator"}}
+      </div>
+      <div class="col-md-6">
+        <h5>Assigned to:</h5>
+        {{gravatar-image email=assignee.email size=40 class="img-circle"}}
+        {{view Ember.Select
+               valueBinding="assigneeId"
+               contentBinding="users"
+               optionLabelPath="content.displayName"
+               optionValuePath="content.id"
+               name="assignee"}}
+      </div>
+    </div>
+  </div>
+</div>

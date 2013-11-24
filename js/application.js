@@ -829,7 +829,45 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
     'class': ("form-control")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.textarea || depth0.textarea),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "textarea", options))));
-  data.buffer.push("\n</div>\n");
+  data.buffer.push("\n</div>\n<div class=\"list-group\">\n  <div class=\"list-group-item\">\n    <div class=\"row\">\n      <div class=\"col-md-6\">\n        <h5>Reported by:</h5>\n        ");
+  hashContexts = {'email': depth0,'size': depth0,'class': depth0};
+  hashTypes = {'email': "ID",'size': "INTEGER",'class': "STRING"};
+  options = {hash:{
+    'email': ("creator.email"),
+    'size': (40),
+    'class': ("img-circle")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers['gravatar-image'] || depth0['gravatar-image']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "gravatar-image", options))));
+  data.buffer.push("\n        ");
+  hashContexts = {'valueBinding': depth0,'contentBinding': depth0,'optionLabelPath': depth0,'optionValuePath': depth0,'name': depth0};
+  hashTypes = {'valueBinding': "STRING",'contentBinding': "STRING",'optionLabelPath': "STRING",'optionValuePath': "STRING",'name': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'valueBinding': ("creatorId"),
+    'contentBinding': ("users"),
+    'optionLabelPath': ("content.displayName"),
+    'optionValuePath': ("content.id"),
+    'name': ("creator")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n      </div>\n      <div class=\"col-md-6\">\n        <h5>Assigned to:</h5>\n        ");
+  hashContexts = {'email': depth0,'size': depth0,'class': depth0};
+  hashTypes = {'email': "ID",'size': "INTEGER",'class': "STRING"};
+  options = {hash:{
+    'email': ("assignee.email"),
+    'size': (40),
+    'class': ("img-circle")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers['gravatar-image'] || depth0['gravatar-image']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "gravatar-image", options))));
+  data.buffer.push("\n        ");
+  hashContexts = {'valueBinding': depth0,'contentBinding': depth0,'optionLabelPath': depth0,'optionValuePath': depth0,'name': depth0};
+  hashTypes = {'valueBinding': "STRING",'contentBinding': "STRING",'optionLabelPath': "STRING",'optionValuePath': "STRING",'name': "STRING"};
+  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.Select", {hash:{
+    'valueBinding': ("assigneeId"),
+    'contentBinding': ("users"),
+    'optionLabelPath': ("content.displayName"),
+    'optionValuePath': ("content.id"),
+    'name': ("assignee")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n      </div>\n    </div>\n  </div>\n</div>\n");
   return buffer;
   
 });
