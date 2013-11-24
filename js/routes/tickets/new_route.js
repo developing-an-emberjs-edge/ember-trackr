@@ -1,4 +1,6 @@
-var TicketsNewRoute = Ember.Route.extend({
+var PreloadsUsers = require('../../mixins/preloads_users');
+
+var TicketsNewRoute = Ember.Route.extend(PreloadsUsers, {
   model: function() {
     return {};
   },
@@ -8,7 +10,9 @@ var TicketsNewRoute = Ember.Route.extend({
       var attrs = this.get('controller').getProperties(
         'title',
         'status',
-        'description'
+        'description',
+        'creator',
+        'assignee'
       );
 
       var ticket = this.get('store').createRecord('ticket', attrs);

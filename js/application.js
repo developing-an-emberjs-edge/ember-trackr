@@ -24,7 +24,7 @@ var GravatarImageComponent = Ember.Component.extend({
 
 module.exports = GravatarImageComponent;
 
-},{"../vendor/md5":23}],2:[function(require,module,exports){
+},{"../vendor/md5":25}],2:[function(require,module,exports){
 var MailToComponent = Ember.Component.extend({
   tagName: 'a',
 
@@ -49,7 +49,7 @@ App.ApplicationAdapter = DS.FixtureAdapter;
 
 module.exports = App;
 
-},{"../vendor/ember":20,"../vendor/ember-data":19,"../vendor/handlebars":21,"../vendor/jquery":22}],4:[function(require,module,exports){
+},{"../vendor/ember":22,"../vendor/ember-data":21,"../vendor/handlebars":23,"../vendor/jquery":24}],4:[function(require,module,exports){
 var App = require('./app');
 
 App.Router.map(function() {
@@ -73,40 +73,24 @@ var ApplicationController = Ember.Controller.extend({
 module.exports = ApplicationController;
 
 },{}],6:[function(require,module,exports){
-var TicketController = Ember.ObjectController.extend({
-  statuses: ['New', 'Open', 'Closed'],
-  needs: ['users'],
-  users: Ember.computed.oneWay('controllers.users'),
+var NeedsUsers = require('../mixins/needs_users');
 
-  creatorId: function(key, value) {
-    if (arguments.length === 1) {
-      return this.get('creator.id');
-    } else {
-      var user = this.get('users').findBy('id', value);
-      this.set('creator', user);
-    }
-  }.property('creator.id'),
-
-  assigneeId: function(key, value) {
-    if (arguments.length === 1) {
-      return this.get('assignee.id');
-    } else {
-      var user = this.get('users').findBy('id', value);
-      this.set('assignee', user);
-    }
-  }.property('assignee.id')
+var TicketController = Ember.ObjectController.extend(NeedsUsers, {
+  statuses: ['New', 'Open', 'Closed']
 });
 
 module.exports = TicketController;
 
-},{}],7:[function(require,module,exports){
-var TicketsNewController = Ember.ObjectController.extend({
+},{"../mixins/needs_users":10}],7:[function(require,module,exports){
+var NeedsUsers = require('../../mixins/needs_users');
+
+var TicketsNewController = Ember.ObjectController.extend(NeedsUsers, {
   statuses: ['New', 'Open']
 });
 
 module.exports = TicketsNewController;
 
-},{}],8:[function(require,module,exports){
+},{"../../mixins/needs_users":10}],8:[function(require,module,exports){
 var UsersController = Ember.ArrayController.extend({
 
 });
@@ -138,13 +122,56 @@ App.UsersNewRoute = require('./routes/users/new_route');
 App.TicketsNewRoute = require('./routes/tickets/new_route');
 App.ApplicationView = require('./views/application_view');
 App.EmberTextField = require('./views/ember/text_field');
+App.NeedsUsers = require('./mixins/needs_users');
+App.PreloadsUsers = require('./mixins/preloads_users');
 
 require('./config/routes');
 
 module.exports = App;
 
 
-},{"./components/gravatar_image_component":1,"./components/mail_to_component":2,"./config/app":3,"./config/routes":4,"./controllers/application_controller":5,"./controllers/ticket_controller":6,"./controllers/tickets/new_controller":7,"./controllers/users_controller":8,"./models/ticket":10,"./models/user":11,"./routes/ticket_route":12,"./routes/tickets/new_route":13,"./routes/tickets_route":14,"./routes/user_route":15,"./routes/users/new_route":16,"./routes/users_route":17,"./templates":18,"./views/application_view":24,"./views/ember/text_field":25}],10:[function(require,module,exports){
+},{"./components/gravatar_image_component":1,"./components/mail_to_component":2,"./config/app":3,"./config/routes":4,"./controllers/application_controller":5,"./controllers/ticket_controller":6,"./controllers/tickets/new_controller":7,"./controllers/users_controller":8,"./mixins/needs_users":10,"./mixins/preloads_users":11,"./models/ticket":12,"./models/user":13,"./routes/ticket_route":14,"./routes/tickets/new_route":15,"./routes/tickets_route":16,"./routes/user_route":17,"./routes/users/new_route":18,"./routes/users_route":19,"./templates":20,"./views/application_view":26,"./views/ember/text_field":27}],10:[function(require,module,exports){
+var NeedsUsers = Ember.Mixin.create({
+  needs: ['users'],
+  users: Ember.computed.oneWay('controllers.users'),
+
+  creatorId: function(key, value) {
+    if (arguments.length === 1) {
+      return this.get('creator.id');
+    } else {
+      var user = this.get('users').findBy('id', value);
+      this.set('creator', user);
+    }
+  }.property('creator.id'),
+
+  assigneeId: function(key, value) {
+    if (arguments.length === 1) {
+      return this.get('assignee.id');
+    } else {
+      var user = this.get('users').findBy('id', value);
+      this.set('assignee', user);
+    }
+  }.property('assignee.id')
+});
+
+module.exports = NeedsUsers;
+
+},{}],11:[function(require,module,exports){
+var PreloadsUsers = Ember.Mixin.create({
+  afterModel: function() {
+    var usersController = this.controllerFor('users');
+
+    var promise = this.get('store').findAll('user').then(function(users) {
+      usersController.set('model', users);
+    });
+
+    return promise;
+  }
+});
+
+module.exports = PreloadsUsers;
+
+},{}],12:[function(require,module,exports){
 var Ticket = DS.Model.extend({
   title: DS.attr('string'),
   description: DS.attr('string'),
@@ -183,7 +210,7 @@ Ticket.FIXTURES = [{
 
 module.exports = Ticket;
 
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var md5 = require('../vendor/md5').md5;
 
 var User = DS.Model.extend({
@@ -222,18 +249,10 @@ User.FIXTURES = [{
 
 module.exports = User;
 
-},{"../vendor/md5":23}],12:[function(require,module,exports){
-var TicketRoute = Ember.Route.extend({
-  afterModel: function() {
-    var usersController = this.controllerFor('users');
+},{"../vendor/md5":25}],14:[function(require,module,exports){
+var PreloadsUsers = require('../mixins/preloads_users');
 
-    var promise = this.get('store').findAll('user').then(function(users) {
-      usersController.set('model', users);
-    });
-
-    return promise;
-  },
-
+var TicketRoute = Ember.Route.extend(PreloadsUsers, {
   actions: {
     edit: function() {
       this.set('controller.isEditing', true);
@@ -248,8 +267,10 @@ var TicketRoute = Ember.Route.extend({
 
 module.exports = TicketRoute;
 
-},{}],13:[function(require,module,exports){
-var TicketsNewRoute = Ember.Route.extend({
+},{"../mixins/preloads_users":11}],15:[function(require,module,exports){
+var PreloadsUsers = require('../../mixins/preloads_users');
+
+var TicketsNewRoute = Ember.Route.extend(PreloadsUsers, {
   model: function() {
     return {};
   },
@@ -259,7 +280,9 @@ var TicketsNewRoute = Ember.Route.extend({
       var attrs = this.get('controller').getProperties(
         'title',
         'status',
-        'description'
+        'description',
+        'creator',
+        'assignee'
       );
 
       var ticket = this.get('store').createRecord('ticket', attrs);
@@ -277,7 +300,7 @@ var TicketsNewRoute = Ember.Route.extend({
 
 module.exports = TicketsNewRoute;
 
-},{}],14:[function(require,module,exports){
+},{"../../mixins/preloads_users":11}],16:[function(require,module,exports){
 var TicketsRoute = Ember.Route.extend({
   model: function() {
     return this.get('store').findAll('ticket');
@@ -286,7 +309,7 @@ var TicketsRoute = Ember.Route.extend({
 
 module.exports = TicketsRoute;
 
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var UserRoute = Ember.Route.extend({
   actions: {
     edit: function() {
@@ -302,7 +325,7 @@ var UserRoute = Ember.Route.extend({
 
 module.exports = UserRoute;
 
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var UsersNewRoute = Ember.Route.extend({
   model: function() {
     return {};
@@ -331,7 +354,7 @@ var UsersNewRoute = Ember.Route.extend({
 
 module.exports = UsersNewRoute;
 
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 var UsersRoute = Ember.Route.extend({
   model: function() {
     return this.get('store').findAll('user');
@@ -340,7 +363,7 @@ var UsersRoute = Ember.Route.extend({
 
 module.exports = UsersRoute;
 
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 
 Ember.TEMPLATES['application'] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
@@ -979,7 +1002,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 // ==========================================================================
 // Project:   Ember Data
 // Copyright: ©2011-2012 Tilde Inc. and contributors.
@@ -9096,7 +9119,7 @@ Ember.onLoad('Ember.Application', function(Application) {
 
 })();
 
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 // Version: v1.0.0
 // Last commit: e2ea0cf (2013-08-31 23:47:39 -0700)
 
@@ -45568,7 +45591,7 @@ Ember.State = generateRemovedClass("Ember.State");
 
 })();
 
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /*
 
 Copyright (C) 2011 by Yehuda Katz
@@ -45932,7 +45955,7 @@ Handlebars.template = Handlebars.VM.template;
 })(Handlebars);
 ;
 
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v1.9.1
  * http://jquery.com/
@@ -55530,7 +55553,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 })( window );
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /*
  * JavaScript MD5 1.0.1
  * https://github.com/blueimp/JavaScript-MD5
@@ -55806,14 +55829,14 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
     }
 }(this));
 
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var ApplicationView = Ember.View.extend({
   classNames: ['application']
 });
 
 module.exports = ApplicationView;
 
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 Ember.TextField.reopen({
   attributeBindings: ['autofocus']
 });

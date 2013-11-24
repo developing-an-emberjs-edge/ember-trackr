@@ -21,6 +21,8 @@ App.UsersNewRoute = require('./routes/users/new_route');
 App.TicketsNewRoute = require('./routes/tickets/new_route');
 App.ApplicationView = require('./views/application_view');
 App.EmberTextField = require('./views/ember/text_field');
+App.NeedsUsers = require('./mixins/needs_users');
+App.PreloadsUsers = require('./mixins/preloads_users');
 
 require('./config/routes');
 
