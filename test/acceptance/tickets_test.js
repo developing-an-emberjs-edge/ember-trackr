@@ -60,6 +60,8 @@ test('creating a ticket', function() {
   .fillIn('[name="title"]', 'My New Ticket')
   .fillIn('[name="status"]', 'Open')
   .fillIn('[name="description"]', 'Foo bar baz.')
+  .fillIn('[name="creator"]', '2')
+  .fillIn('[name="assignee"]', '1')
   .click('button:contains("Save")')
   .then(function() {
     ok(find('.list-group-item:contains("My New Ticket")').length,
@@ -68,6 +70,10 @@ test('creating a ticket', function() {
        'expected to see ticket in the details view');
     ok(find('.panel-title:contains("Open")').length,
        'expected ticket status to be "Open"');
+    ok(find('a:contains("Tom Dale")').length,
+       'expected creator to be Tom');
+    ok(find('a:contains("Yehuda Katz")').length,
+       'expected assignee to be Yehuda');
   });
 });
 
