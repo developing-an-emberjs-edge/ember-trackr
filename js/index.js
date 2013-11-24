@@ -9,6 +9,7 @@ App.GravatarImageComponent = require('./components/gravatar_image_component');
 App.MailToComponent = require('./components/mail_to_component');
 App.ApplicationController = require('./controllers/application_controller');
 App.TicketController = require('./controllers/ticket_controller');
+App.UsersController = require('./controllers/users_controller');
 App.TicketsNewController = require('./controllers/tickets/new_controller');
 App.Ticket = require('./models/ticket');
 App.User = require('./models/user');
