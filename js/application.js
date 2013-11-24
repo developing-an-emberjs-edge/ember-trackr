@@ -206,6 +206,16 @@ module.exports = User;
 
 },{"../vendor/md5":23}],12:[function(require,module,exports){
 var TicketRoute = Ember.Route.extend({
+  afterModel: function() {
+    var usersController = this.controllerFor('users');
+
+    var promise = this.get('store').findAll('user').then(function(users) {
+      usersController.set('model', users);
+    });
+
+    return promise;
+  },
+
   actions: {
     edit: function() {
       this.set('controller.isEditing', true);
