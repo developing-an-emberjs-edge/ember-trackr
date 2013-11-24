@@ -74,7 +74,9 @@ module.exports = ApplicationController;
 
 },{}],6:[function(require,module,exports){
 var TicketController = Ember.ObjectController.extend({
-  statuses: ['New', 'Open', 'Closed']
+  statuses: ['New', 'Open', 'Closed'],
+  needs: ['users'],
+  users: Ember.computed.oneWay('controllers.users')
 });
 
 module.exports = TicketController;
